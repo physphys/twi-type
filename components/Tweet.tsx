@@ -1,17 +1,21 @@
 import React from 'react'
 import { Component } from 'react';
 import { StyleSheet, View, Image, Text, TouchableOpacity, Alert, } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 interface Props {
   tweet: String,
   userName: String,
   userId: String,
   postedBefore: String,
+  replyCount: Number,
+  retweetCount: Number,
+  likeCount: Number,
 }
 
-interface State { }
+interface State {
+  isLiked?: Boolean,
+}
 
 export default class Tweet extends Component<Props, State> {
   constructor(props: Props) {
@@ -40,12 +44,37 @@ export default class Tweet extends Component<Props, State> {
             <Text style={styles.userId}>@{this.props.userId}</Text>
             <Text style={styles.postedBefore}>・{this.props.postedBefore}</Text>
             <TouchableOpacity onPress={this.actionForTweet} style={styles.arrowButton}>
-              <Icon name="angle-down" style={styles.arrow} />
+              <FontAwesome5 name="angle-down" size={20} />
             </TouchableOpacity>
           </View>
           <Text style={styles.tweetBody}>{this.props.tweet}</Text>
+          <View style={styles.tweetFooter}>
+            <View style={styles.tweetAction}>
+              <TouchableOpacity style={styles.tweetActionButton}>
+                <FontAwesome5 name={'comment'} size={15} />
+              </TouchableOpacity>
+              <Text>{this.props.replyCount}</Text>
+            </View>
+            <View style={styles.tweetAction}>
+              <TouchableOpacity style={styles.tweetActionButton}>
+                <FontAwesome5 name={'retweet'} size={15} />
+              </TouchableOpacity>
+              <Text>{this.props.retweetCount}</Text>
+            </View>
+            <View style={styles.tweetAction}>
+              <TouchableOpacity style={styles.tweetActionButton}>
+                <FontAwesome5 name={'heart'} size={15} />
+              </TouchableOpacity>
+              <Text>{this.props.likeCount}</Text>
+            </View>
+            <View style={styles.tweetAction}>
+              <TouchableOpacity style={styles.tweetActionButton}>
+                <FontAwesome5 name={'share-alt'} size={15} />
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
-      </View>
+      </View >
     );
   }
 }
@@ -83,14 +112,22 @@ const styles = StyleSheet.create({
   postedBefore: {
     color: '#ccc',
   },
-  arrow: {
-    height: 8,
-    width: 18,
-  },
   tweetBody: {
     paddingRight: 8,
+    paddingBottom: 10,
   },
   arrowButton: {
     marginLeft: 'auto',
+  },
+  tweetFooter: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingRight: 20,
+  },
+  tweetAction: {
+    flexDirection: 'row',
+  },
+  tweetActionButton: {
+    marginRight: 3,
   },
 });

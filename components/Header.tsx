@@ -1,7 +1,7 @@
 import React from 'react'
 import { Component } from 'react';
 import { Alert, StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 export default class Header extends Component {
   openProfile = () => {
@@ -24,7 +24,7 @@ export default class Header extends Component {
         </TouchableOpacity>
         <Text style={styles.text}>ホーム</Text>
         <TouchableOpacity onPress={this.openProfile}>
-          <Icon name="pencil" style={styles.pencil} />
+          <FontAwesome5 name="pencil-alt" size={20} />
         </TouchableOpacity>
       </View>
     );
@@ -49,10 +49,6 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     borderWidth: 1,
     borderColor: '#ccc',
-  },
-  pencil: {
-    height: 35,
-    width: 35,
   },
   text: {
     fontSize: 25,
