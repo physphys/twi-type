@@ -9,7 +9,7 @@ type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: 'black' }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
         <View style={styles.container}>
           <Header></Header>
           <Main></Main>
