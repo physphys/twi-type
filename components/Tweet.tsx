@@ -1,6 +1,8 @@
 import React from 'react'
 import { Component } from 'react';
 import { StyleSheet, View, Image, Text, TouchableOpacity, Alert, } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 interface Props {
   tweet: String,
@@ -38,7 +40,7 @@ export default class Tweet extends Component<Props, State> {
             <Text style={styles.userId}>@{this.props.userId}</Text>
             <Text style={styles.postedBefore}>・{this.props.postedBefore}</Text>
             <TouchableOpacity onPress={this.actionForTweet} style={styles.arrowButton}>
-              <Image source={require('../images/bottom-arrow.png')} style={styles.arrow} />
+              <Icon name="angle-down" style={styles.arrow} />
             </TouchableOpacity>
           </View>
           <Text style={styles.tweetBody}>{this.props.tweet}</Text>
@@ -54,7 +56,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     width: '100%',
     padding: 10,
-    borderBottomWidth: 1,
+    borderBottomWidth: 0.5,
   },
   icon: {
     height: 50,
