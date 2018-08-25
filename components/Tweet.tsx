@@ -4,6 +4,7 @@ import { StyleSheet, View, Image, Text, TouchableOpacity, Alert, } from 'react-n
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 interface Props {
+  id: Number,
   tweet: String,
   userName: String,
   userId: String,
@@ -11,15 +12,20 @@ interface Props {
   replyCount: Number,
   retweetCount: Number,
   likeCount: Number,
+  isLiked: Boolean,
+  onUpdateTweet: void,
 }
 
 interface State {
-  isLiked?: Boolean,
+  isLiked: Boolean,
 }
 
 export default class Tweet extends Component<Props, State> {
   constructor(props: Props) {
-    super(props)
+    super(props);
+    this.state = {
+      isLiked: false,
+    }
   }
 
   actionForTweet = () => {
@@ -62,8 +68,8 @@ export default class Tweet extends Component<Props, State> {
               <Text>{this.props.retweetCount}</Text>
             </View>
             <View style={styles.tweetAction}>
-              <TouchableOpacity style={styles.tweetActionButton}>
-                <FontAwesome5 name={'heart'} size={15} />
+              <TouchableOpacity style={styles.tweetActionButton} onPress={() => this.setState({ isLiked: !this.state.isLiked })}>
+                {this.state.isLiked ? <FontAwesome5 name={'heart'} size={15} solid /> : <FontAwesome5 name={'heart'} size={15} />}
               </TouchableOpacity>
               <Text>{this.props.likeCount}</Text>
             </View>
