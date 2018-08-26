@@ -38,8 +38,6 @@ export default class App extends Component<Props, State> {
       .get('http://localhost:3000/tweets')
       .then((results) => {
         this.setState({ tweets: results.data })
-        console.log('App.tsx')
-        console.log(this.state.tweets)
       })
       .catch((error) => { console.log('failed to fetch tweets') })
   }

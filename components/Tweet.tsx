@@ -7,26 +7,21 @@ interface Props {
   tweets: {
     id: Number,
     body: String,
-    user_name: String,
-    user_id: Number,
-    created_at: String,
-    reply_count: Number,
-    retweet_count: Number,
-    like_count: Number,
-    is_liked: Boolean,
+    userName: String,
+    userId: Number,
+    postedBefore: String,
+    replyCount: Number,
+    retweetCount: Number,
+    likeCount: Number,
+    isLiked: Boolean,
   }[],
 }
 
-interface State {
-  isLiked: Boolean,
-}
+interface State { }
 
 export default class Tweet extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.state = {
-      isLiked: false,
-    }
   }
 
   actionForTweet = () => {
@@ -69,8 +64,8 @@ export default class Tweet extends Component<Props, State> {
               <Text>{this.props.retweetCount}</Text>
             </View>
             <View style={styles.tweetAction}>
-              <TouchableOpacity style={styles.tweetActionButton} onPress={() => this.setState({ isLiked: !this.state.isLiked })}>
-                {this.state.isLiked ? <FontAwesome5 name={'heart'} size={15} solid /> : <FontAwesome5 name={'heart'} size={15} />}
+              <TouchableOpacity style={styles.tweetActionButton} onPress={() => this.setState({ isLiked: !this.props.isLiked })}>
+                {this.props.isLiked ? <FontAwesome5 name={'heart'} size={15} solid /> : <FontAwesome5 name={'heart'} size={15} />}
               </TouchableOpacity>
               <Text>{this.props.likeCount}</Text>
             </View>
