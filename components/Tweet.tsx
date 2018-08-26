@@ -4,16 +4,17 @@ import { StyleSheet, View, Image, Text, TouchableOpacity, Alert, } from 'react-n
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 interface Props {
-  id: Number,
-  tweet: String,
-  userName: String,
-  userId: String,
-  postedBefore: String,
-  replyCount: Number,
-  retweetCount: Number,
-  likeCount: Number,
-  isLiked: Boolean,
-  onUpdateTweet: void,
+  tweets: {
+    id: Number,
+    body: String,
+    user_name: String,
+    user_id: Number,
+    created_at: String,
+    reply_count: Number,
+    retweet_count: Number,
+    like_count: Number,
+    is_liked: Boolean,
+  }[],
 }
 
 interface State {
