@@ -4,7 +4,7 @@ import { StyleSheet, SafeAreaView, View } from 'react-native';
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 
 interface State {
   tweets: {
@@ -47,7 +47,7 @@ export default class App extends Component<Props, State> {
       <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
         <View style={styles.container}>
           <Header></Header>
-          <Main tweets={this.state.tweets}></Main>
+          <Main tweets={this.state.tweets} onUpdateTweet={this.fetchTweets}></Main>
           <Footer></Footer>
         </View>
       </SafeAreaView>

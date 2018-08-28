@@ -15,6 +15,7 @@ interface Props {
     like_count: Number,
     is_liked: Boolean,
   }[],
+  onUpdateTweet(): void,
 }
 
 interface State { }
@@ -30,15 +31,8 @@ export default class Main extends Component<Props, State> {
         <FlatList
           data={this.props.tweets}
           renderItem={({ item }) => <Tweet
-            id={item.id}
-            tweet={item.body}
-            userName={item.user_name}
-            userId={item.user_id}
-            postedBefore={item.created_at}
-            replyCount={item.reply_count}
-            retweetCount={item.retweet_count}
-            likeCount={item.like_count}
-            isLiked={item.is_liked}
+            tweet={item}
+            onUpdateTweet={this.props.onUpdateTweet}
           ></Tweet>}
           keyExtractor={item => item.id.toString()}
         />
